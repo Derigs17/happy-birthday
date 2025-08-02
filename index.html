@@ -2,14 +2,12 @@
 <html lang="id">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta charset="UTF-8">
   <title>🎂 Buat Kamu</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
 </head>
 <body>
-
 
 <section class="slide active" id="slide1" style="background-image: url('assets/bg1.png');">
   <div class="card">
@@ -20,7 +18,6 @@
   </div>
 </section>
 
-
 <section class="slide" id="slide2" style="background-image: url('assets/bg2.png');">
   <div class="card">
     <img src="assets/3.gif" class="gif">
@@ -29,14 +26,12 @@
   </div>
 </section>
 
-
 <section class="slide" id="slide3" style="background-image: url('assets/bg3.png');">
   <div class="card">
     <img src="assets/2.gif" class="gif">
     <h1 id="waitText" class="typing"></h1>
   </div>
 </section>
-
 
 <section class="slide" id="slide4" style="background-image: url('assets/bg4.png');">
   <div class="card">
@@ -46,7 +41,6 @@
   </div>
 </section>
 
-
 <section class="slide" id="slide5" style="background-image: url('assets/bg5.png');">
   <div class="card">
     <img src="assets/6.gif" class="gif">
@@ -54,32 +48,86 @@
   </div>
 </section>
 
-
 <section class="slide" id="slide6" style="background-image: url('assets/bg6.png');">
   <canvas id="confetti-canvas"></canvas>
   <div class="card final-card">
     <img src="assets/last.gif" class="gif">
-    <h1>🎉 Untuk Kamu</h1>
+    <h1 id="finalTitle">🎉 Untuk Kamu</h1>
     <p id="finalWish" class="typing"></p>
   </div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
-<script src="script.js"></script>
+<script>
+let current = 1;
+let loveClicked = 0;
+let namaUser = "";
+
+function showSlide(n) {
+  document.querySelector(`#slide${current}`).classList.remove('active');
+  document.querySelector(`#slide${n}`).classList.add('active');
+  current = n;
+}
+
+function lanjutKeSlide2() {
+  const nama = document.getElementById('namaInput').value.trim();
+  if (!nama) return alert("Masukin nama dulu yaa 😅");
+  namaUser = nama;
+  showSlide(2);
+}
+
+window.onload = () => {
+  const loveContainer = document.getElementById("loveContainer");
+  loveContainer.innerHTML = '';
+  Array.from("❤️❤️❤️❤️").forEach((heart, i) => {
+    const span = document.createElement("span");
+    span.textContent = heart;
+    span.onclick = () => {
+      if (!span.classList.contains('clicked')) {
+        span.classList.add('clicked');
+        loveClicked++;
+        if (loveClicked === 4) {
+          setTimeout(() => {
+            showSlide(3);
+            ketik("waitText", "Tunggu yaaa... 🙈", () => setTimeout(() => {
+              showSlide(4);
+              document.getElementById("cieText").innerText = `Ciee sayang... selamat ulang tahun ya 🥳`;
+            }, 2000));
+          }, 300);
+        }
+      }
+    };
+    loveContainer.appendChild(span);
+  });
+};
+
+function nextSlide() {
+  if (current === 4) {
+    showSlide(5);
+    ketik("bdayText", "Selamat ulang tahun ya sayang 🎉💕", () => {
+      setTimeout(() => {
+        showSlide(6);
+        document.getElementById("finalTitle").innerText = `🎉 Untuk ${namaUser}`;
+        const msg = `Selamat ulang tahun ya sayang 🎂✨\nSemoga harimu selalu penuh tawa, cinta, dan kejutan manis! Aku bersyukur banget punya kamu ❤️`;
+        ketik("finalWish", msg);
+        new ConfettiGenerator({ target: 'confetti-canvas' }).render();
+      }, 2000);
+    });
+  }
+}
+
+function ketik(id, text, callback) {
+  let i = 0;
+  document.getElementById(id).innerHTML = '';
+  function type() {
+    if (i < text.length) {
+      document.getElementById(id).innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, 40);
+    } else if (callback) callback();
+  }
+  type();
+}
+</script>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Halaman Tidak Aktif</title>
-  <style>
-    body { text-align: center; font-family: sans-serif; padding-top: 100px; }
-  </style>
-</head>
-<body>
-  <h1>Situs ini sedang dinonaktifkan sementara 💔</h1>
-  <p>Kembali lagi nanti ya...</p>
-</body>
-</html> -->
