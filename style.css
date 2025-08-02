@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  font-family: 'Fredoka', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.slide {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  animation: fade 0.5s ease-in-out;
+  background-size: cover;
+  background-position: center;
+}
+
+.slide.active {
+  display: flex;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  color: #ff4f81;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.card.final-card {
+  max-width: 400px;
+}
+
+canvas#confetti-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.gif {
+  width: 160px;
+  max-width: 60%;
+  margin-bottom: 15px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+input {
+  padding: 12px;
+  border: none;
+  font-size: 1em;
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 90%;
+  max-width: 250px;
+}
+
+button {
+  background-color: #ff4f81;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.typing::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1 }
+  50% { opacity: 0 }
+}
+
+.love-container {
+  font-size: 2em;
+  cursor: pointer;
+}
+.love-container span.clicked {
+  opacity: 0.3;
+}
+
+@keyframes fade {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 20px;
+    width: 90%;
+    max-width: 90%;
+  }
+
+  .gif {
+    width: 100px;
+  }
+
+  button {
+    font-size: 0.9em;
+  }
+}

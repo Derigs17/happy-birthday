@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta charset="UTF-8">
+  <title>🎂 Buat Kamu</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<section class="slide active" id="slide1" style="background-image: url('assets/bg1.png');">
+  <div class="card">
+    <img src="assets/4.gif" class="gif">
+    <h1>Hai, kamu siapa ya? 😊</h1>
+    <input type="text" id="namaInput" placeholder="Masukin nama kamu...">
+    <button onclick="lanjutKeSlide2()">Lanjut 💖</button>
+  </div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide" id="slide2" style="background-image: url('assets/bg2.png');">
+  <div class="card">
+    <img src="assets/3.gif" class="gif">
+    <h1>Klik 4 LOVE di bawah! 😍</h1>
+    <div class="love-container" id="loveContainer"></div>
+  </div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide" id="slide3" style="background-image: url('assets/bg3.png');">
+  <div class="card">
+    <img src="assets/2.gif" class="gif">
+    <h1 id="waitText" class="typing"></h1>
+  </div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide" id="slide4" style="background-image: url('assets/bg4.png');">
+  <div class="card">
+    <img src="assets/5.gif" class="gif">
+    <h1 id="cieText"></h1>
+    <button onclick="nextSlide()">Lanjut ❤</button>
+  </div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide" id="slide5" style="background-image: url('assets/bg5.png');">
+  <div class="card">
+    <img src="assets/6.gif" class="gif">
+    <h1 id="bdayText" class="typing"></h1>
+  </div>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="slide" id="slide6" style="background-image: url('assets/bg6.png');">
+  <canvas id="confetti-canvas"></canvas>
+  <div class="card final-card">
+    <img src="assets/intro.gif" class="gif">
+    <h1>🎉 Untuk Kamu</h1>
+    <p id="finalWish" class="typing"></p>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
